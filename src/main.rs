@@ -16,7 +16,9 @@ pub extern "C" fn _start() -> ! {
     luna_os::init();
     // x86_64::instructions::interrupts::int3();
     println!("Hello, \n  -- kernel");
-    
+    unsafe {
+        *(0xdeadbeef as *mut u8) = 42;
+    };
     // use core::fmt::Write;
     // vga_buffer::WRITER.lock().write_str("Hello again").unwrap();
     // write!(vga_buffer::WRITER.lock(), ", some numbers: {} {}", 42, 1.337).unwrap();
